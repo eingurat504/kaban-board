@@ -65,6 +65,8 @@ class TaskController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required',
             'description' => 'required',
+            'user_id' => 'required',
+            'category_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -74,6 +76,8 @@ class TaskController extends Controller
         $task_info = [
             'name' => $request->name,
             'description' => $request->description,
+            'user_id' => $request->user_id,
+            'category_id' => $request->category_id,
         ];
 
         $task = Task::create($task_info);
@@ -101,7 +105,7 @@ class TaskController extends Controller
             return response()->json($validator->messages()->toArray(),422);
         }
 
-        Task::where('id', $taskId)
+        $task = Task::where('id', $taskId)
         ->update([
             'name' => $request->name,
             'description' => $request->description,
