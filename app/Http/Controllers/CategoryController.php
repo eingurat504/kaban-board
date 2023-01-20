@@ -36,7 +36,7 @@ class CategoryController extends Controller
         ->take($request->input('limit', 1000))
         ->get();
 
-    return response()->json(['categories' => $categories]);
+        return response()->json(['categories' => $categories]);
     }
 
    /**
