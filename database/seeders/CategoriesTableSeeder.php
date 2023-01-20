@@ -20,6 +20,6 @@ class CategoriesTableSeeder extends Seeder
             'description' => 'Ideas'
         ];
 
-            Category::create($categories);
+        Category::create($categories);
     }
 }

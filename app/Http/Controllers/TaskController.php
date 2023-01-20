@@ -41,7 +41,19 @@ class TaskController extends Controller
     }
 
 
-        /**
+    public function show($taskId){
+
+        $task = Task::find($taskId);
+
+        if(!$task) {
+            return response()->json(['error' => 'Unknown task']);
+        }
+
+        return response()->json($task);
+    }
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -70,5 +82,33 @@ class TaskController extends Controller
     }
 
 
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $taskId)
+    {
+
+        $validator = Validator::make($request->all(),[
+            'name' => 'nullable',
+            'description' => 'nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->messages()->toArray(),422);
+        }
+
+        Task::where('id', $taskId)
+        ->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return response()->json($task);
+    }
 
 }
