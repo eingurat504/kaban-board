@@ -10,14 +10,20 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "vue": "^2.6.12",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.57.1",
+        "sass-loader": "^12.1.0",
+        "vue": "^2.6.12",
         "vue-axios": "^3.2.2",
         "vue-loader": "^15.9.6",
         "vue-router": "^3.4.9",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "vuedraggable": "^2.24.3"
     }
 }

@@ -1,7 +1,5 @@
-const Welcome = () => import('./components/Welcome.vue' /* webpackChunkName: "resource/js/components/welcome" */)
-// const CategoryList = () => import('./components/category/List.vue' /* webpackChunkName: "resource/js/components/category/list" */)
-// const CategoryCreate = () => import('./components/category/Add.vue' /* webpackChunkName: "resource/js/components/category/add" */)
-// const CategoryEdit = () => import('./components/category/Edit.vue' /* webpackChunkName: "resource/js/components/category/edit" */)
+import Welcome from './components/Welcome.vue'
+import Board from './components/Board.vue'
 
 export const routes = [
     {
@@ -9,19 +7,9 @@ export const routes = [
         path: '/',
         component: Welcome
     },
-    // {
-    //     name: 'categoryList',
-    //     path: '/category',
-    //     component: CategoryList
-    // },
-    // {
-    //     name: 'categoryEdit',
-    //     path: '/category/:id/edit',
-    //     component: CategoryEdit
-    // },
-    // {
-    //     name: 'categoryAdd',
-    //     path: '/category/add',
-    //     component: CategoryCreate
-    // }
+    {
+        name: 'board',
+        path: '/board',
+        component: Board
+    },
 ]
