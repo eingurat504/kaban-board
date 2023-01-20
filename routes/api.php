@@ -24,5 +24,7 @@ Route::group(['prefix' => 'categories', 'as' => 'categories.'],function() {
 
 Route::group(['prefix' => 'tasks', 'as' => 'tasks.'],function() {   
     Route::get('/',[TaskController::class,'index']);
+    Route::get('/{task}',[TaskController::class,'show']);
+    Route::put('/{task}',[TaskController::class,'update']);
     Route::post('/',[TaskController::class,'store']);
 });

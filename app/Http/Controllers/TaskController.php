@@ -85,8 +85,6 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
-
-    
     /**
      * Store a newly created resource in storage.
      *
