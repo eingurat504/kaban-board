@@ -40,7 +40,12 @@ class TaskController extends Controller
     return response()->json(['tasks' => $tasks]);
     }
 
-
+   /**
+     * Show Category
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function show($taskId){
 
         $task = Task::find($taskId);
@@ -54,7 +59,7 @@ class TaskController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store category
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -67,6 +72,7 @@ class TaskController extends Controller
             'description' => 'required',
             'user_id' => 'required',
             'category_id' => 'required',
+            'order' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -78,6 +84,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'user_id' => $request->user_id,
             'category_id' => $request->category_id,
+            'order' => $request->order
         ];
 
         $task = Task::create($task_info);
@@ -86,7 +93,7 @@ class TaskController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update Category.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -106,6 +113,9 @@ class TaskController extends Controller
         $task = Task::where('id', $taskId)
         ->update([
             'name' => $request->name,
+            'user_id' => $request->user_id,
+            'category_id' => $request->category_id,
+            'order' => $request->order,
             'description' => $request->description,
             'updated_at' => date('Y-m-d H:i:s')
         ]);

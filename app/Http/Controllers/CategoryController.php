@@ -68,13 +68,18 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Tasks per Category.
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function tasks($categoryId)
     {
         //
+        $category = Category::find($categoryId);
+
+        $tasks = $category->tasks()->orderBy('order')->get();
+
+        return response()->json([ 'tasks' => $tasks ]);
     }
 }

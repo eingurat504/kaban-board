@@ -76,17 +76,18 @@
                 addNew(id) {
                     let user_id = 1
                     let name = "New task"
+                    let description = "task description"
                     let category_id = this.categories[id].id
                     let order = this.categories[id].tasks.length
 
-                    this.axios.post('api/tasks', {user_id, name, order, category_id}).then(response => {
+                    this.axios.post('api/tasks', {user_id, name, description, order, category_id}).then(response => {
                         this.categories[id].tasks.push(response.data.tasks)
                     })
                 },
                 loadTasks() {
                     this.categories.map(category => {
-                        this.axios.get(`api/categories/${category.id}/tasks`).then(response => {
-                            category.tasks = response.data
+                        this.axios.get('api/categories/' + category.id + '/tasks').then(response => {
+                            category.tasks = response.data.tasks
                         })
                     })
                 },
@@ -98,14 +99,14 @@
                     let order = data.newIndex == data.oldIndex ? false : data.newIndex
 
                     if (order !== false) {
-                        this.axios.patch(`api/tasks/${task_id}`, {order, category_id}).then(response => {
+                        this.axios.patch('api/tasks/' + task_id, {order, category_id}).then(response => {
                             // Do anything you want here
                         });
                     }
                 },
                 endEditing(task) {
                     this.editingTask = null
-                    this.axios.patch(`api/tasks/${task.id}`, {name: task.name}).then(response => {
+                    this.axios.patch('api/tasks/' + $task_id, {name: task.name}).then(response => {
                         // You can do anything you wan't here.
                     })
                 },
@@ -114,11 +115,6 @@
                 }
             },
             mounted(){
-
-                //  let token = localStorage.getItem('jwt')
-
-                // axios.defaults.headers.common['Content-Type'] = 'application/json'
-                // axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
 
                 this.axios.get('api/categories').then(response => {
                     this.data = response.data.categories;

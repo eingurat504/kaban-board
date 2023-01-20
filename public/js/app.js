@@ -2083,11 +2083,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       var user_id = 1;
       var name = "New task";
+      var description = "task description";
       var category_id = this.categories[id].id;
       var order = this.categories[id].tasks.length;
       this.axios.post('api/tasks', {
         user_id: user_id,
         name: name,
+        description: description,
         order: order,
         category_id: category_id
       }).then(function (response) {
@@ -2097,8 +2099,8 @@ __webpack_require__.r(__webpack_exports__);
     loadTasks: function loadTasks() {
       var _this2 = this;
       this.categories.map(function (category) {
-        _this2.axios.get("api/categories/".concat(category.id, "/tasks")).then(function (response) {
-          category.tasks = response.data;
+        _this2.axios.get('api/categories/' + category.id + '/tasks').then(function (response) {
+          category.tasks = response.data.tasks;
         });
       });
     },
@@ -2109,7 +2111,7 @@ __webpack_require__.r(__webpack_exports__);
       var category_id = fromTask.id == toTask.id ? null : toTask.id;
       var order = data.newIndex == data.oldIndex ? false : data.newIndex;
       if (order !== false) {
-        this.axios.patch("api/tasks/".concat(task_id), {
+        this.axios.patch('api/tasks/' + task_id, {
           order: order,
           category_id: category_id
         }).then(function (response) {
@@ -2119,7 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     endEditing: function endEditing(task) {
       this.editingTask = null;
-      this.axios.patch("api/tasks/".concat(task.id), {
+      this.axios.patch('api/tasks/' + $task_id, {
         name: task.name
       }).then(function (response) {
         // You can do anything you wan't here.

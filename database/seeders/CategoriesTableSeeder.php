@@ -16,10 +16,13 @@ class CategoriesTableSeeder extends Seeder
     {
         //
         $categories = [
-            'name' => 'Ideas', 
-            'description' => 'Ideas'
+            'Ideas', 
+            'On Going', 
+            'Completed'
         ];
 
-        Category::create($categories);
+        foreach ($categories as $category) {
+            Category::create(['name' => $category]);
+        }
     }
 }
