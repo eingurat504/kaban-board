@@ -20,7 +20,8 @@
                                     </transition-group>
                                 </draggable>
                                 <div class="small-card">
-                                    <h5 class="text-center" @click="addNew(index)">Add new card</h5>
+                                    <!-- <h5 class="text-center" @click="addNew(index)">Add new card</h5> -->
+                                        <button class="text-center" @click="addNew(index)">Add new card</button>
                                 </div>
                             </div>
                         </div>
@@ -28,6 +29,7 @@
                 </transition-group>
             </draggable>
         </div>
+    <!-- <base-modal v-if="isShowModal"/> -->
     </div>
 </template>
 
@@ -137,12 +139,5 @@
                   };
                 },
             },
-            // beforeRouteEnter (to, from, next) { 
-            //     if ( ! localStorage.getItem('jwt')) {
-            //         return next('login')
-            //     }
-
-            //     next()
-            // }
     }
     </script>

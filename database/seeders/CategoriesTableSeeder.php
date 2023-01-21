@@ -16,9 +16,9 @@ class CategoriesTableSeeder extends Seeder
     {
         //
         $categories = [
-            'Ideas', 
-            'On Going', 
-            'Completed'
+            'To Do', 
+            'In Progress', 
+            'Done'
         ];
 
         foreach ($categories as $category) {

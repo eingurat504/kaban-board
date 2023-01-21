@@ -2133,11 +2133,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var _this3 = this;
-    //  let token = localStorage.getItem('jwt')
-
-    // axios.defaults.headers.common['Content-Type'] = 'application/json'
-    // axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
-
     this.axios.get('api/categories').then(function (response) {
       _this3.data = response.data.categories;
       _this3.data.forEach(function (data) {
@@ -2362,7 +2357,7 @@ var render = function render() {
       }, [_vm._v(_vm._s(task.name))]) : _vm._e()])]);
     }), 0)], 1), _vm._v(" "), _c("div", {
       staticClass: "small-card"
-    }, [_c("h5", {
+    }, [_c("button", {
       staticClass: "text-center",
       on: {
         click: function click($event) {
